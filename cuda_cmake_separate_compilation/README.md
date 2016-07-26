@@ -1,7 +1,7 @@
 #CUDA seperate compilation example
 
 ##Main goal
-The project tackles the task of compiling CUDA kernels **separately** from main file and using them in a **.cpp** file instead of a .cu one. In addition to that, we want to use default CMAKE function (*_add_executable_*) to generate the executable instead of cuda function (*cuda_add_executable*).
+The project tackles the task of compiling CUDA kernels **separately** from main file and using them in a **.cpp** file instead of a .cu one. In addition to that, we want to use default CMAKE function (**_add_executable_**) to generate the executable instead of cuda function (*cuda_add_executable*).
 
 ##The adopted approach
 The traditional fashion for doing separate compilation is to declare functions in header and source files and call them from main. Functions will be compiled into a library and linked to the generated executable. 
