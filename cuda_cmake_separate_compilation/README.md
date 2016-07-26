@@ -11,9 +11,9 @@ With CUDA, seperate compilation task isn't obvious. Several changes must be take
   - A kernel wrapper must be prepared to bake all GPU functions into a CPU-callable function 
   - The kernel must be undeclared in .h file
   - In the source file (.cu), extern "C" must precede the kernel to make it visible to main.cpp
-  - In CMakeLists.txt, the functions can be compiled into a library, and then linked to the target in a classic way
+  - In CMakeLists.txt, the functions can be compiled into a library using *cuda_compile*, and then linked to the target in a classic way
   
-##Usefulness of the example
+##Utility of the example
 This project is useful for anyone who wants to create superfast GPU functions, precompile them into libraries for further use, and link them in a classic fashion to any other c++ project.
 
 Enjoy !
