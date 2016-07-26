@@ -1,20 +1,14 @@
-/*
- * myKernels.cu
- *
- *  Created on: 2016-07-22
- *      Author: khalil
- */
 #include <iostream>
 #include <numeric>
 #include <stdlib.h>
 #include "myKernels.h"
 
+// extern "C" is required to make .cpp files recognize and use the kernel
 extern "C" __global__ void reciprocalKernel(float *data, unsigned vectorSize) {
 	unsigned idx = blockIdx.x*blockDim.x+threadIdx.x;
 	if (idx < vectorSize)
 		data[idx] = 1.0/data[idx];
 }
-
 
 float *gpuReciprocal(float *data, unsigned size)
 {
