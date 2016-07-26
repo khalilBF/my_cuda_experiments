@@ -1,1 +1,1 @@
-#CUDA seperate compilation example
+CUDA seperate compilation example
