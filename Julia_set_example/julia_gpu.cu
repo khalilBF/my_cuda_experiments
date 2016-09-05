@@ -22,6 +22,8 @@
 struct cuComplex {
     float   r;
     float   i;
+    // In the original example, there was no __device__ header, I added it to make the constructor
+    // callable from device
     __device__ cuComplex( float a, float b ) : r(a), i(b)  {}
     __device__ float magnitude2( void ) {
         return r * r + i * i;
@@ -33,7 +35,6 @@ struct cuComplex {
         return cuComplex(r+a.r, i+a.i);
     }
 };
-
 __device__ int julia( int x, int y ) {
     const float scale = 1.5;
     float jx = scale * (float)(DIM/2 - x)/(DIM/2);
@@ -51,7 +52,6 @@ __device__ int julia( int x, int y ) {
 
     return 1;
 }
-
 __global__ void kernel( unsigned char *ptr ) {
     // map from blockIdx to pixel position
     int x = blockIdx.x;
@@ -65,7 +65,6 @@ __global__ void kernel( unsigned char *ptr ) {
     ptr[offset*4 + 2] = 255 * juliaValue;
     ptr[offset*4 + 3] = 255;
 }
-
 // globals needed by the update routine
 struct DataBlock {
     unsigned char   *dev_bitmap;
